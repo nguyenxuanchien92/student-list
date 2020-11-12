@@ -4,7 +4,7 @@ import entities.Student;
 
 public class ManageStudent {
     static int count = 0;
-    static int range = count +1;
+    static int range = 10;
     static Student[] listStudent = new Student[range];
 
 
@@ -22,18 +22,25 @@ public class ManageStudent {
             System.out.println(student.toString());
         }
     }
-//khong cheat duoc xai cach cu thoi chien oi :((
-    public void addStudent(Student student) {
-        if (this.getListStudent().length < 0) {
-            System.out.println("List student is not exist");
-        } else if (this.count == 0) {
-            this.getListStudent()[0] = student;
-        } else {
 
-            int val = this.count;
-            this.getListStudent()[this.count] = student;
-            this.count++;
+    public Student[] addStudent(Student student) {
+        Student[] currentStudents = this.getListStudent();
+        Student[] newStudents = new Student[range + 1];
+        if (isHasValue(currentStudents)) {
+            for (int i = 0; i < range; i++) {
+                newStudents[i] = currentStudents[i];
+            }
+            //....
         }
-        this.count++;
+
+        return newStudents;
+    }
+
+    private boolean isHasValue(Student[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == null)
+                return false;
+        }
+        return true;
     }
 }
