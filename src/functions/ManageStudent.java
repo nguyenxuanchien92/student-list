@@ -26,11 +26,12 @@ public class ManageStudent {
     public Student[] addStudent(Student student) {
         Student[] currentStudents = this.getListStudent();
         Student[] newStudents = new Student[range + 1];
-        if (isHasValue(currentStudents)) {
-            for (int i = 0; i < range; i++) {
-                newStudents[i] = currentStudents[i];
-            }
-            //....
+
+        for (int i = 0; i < range; i++) {
+            newStudents[i] = currentStudents[i];
+        }
+        if(isHasValue(currentStudents)){
+
         }
 
         return newStudents;
@@ -38,9 +39,9 @@ public class ManageStudent {
 
     private boolean isHasValue(Student[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == null)
-                return false;
+            if (arr[arr.length - 1] == null)
+                return true;
         }
-        return true;
+        return false;
     }
 }
